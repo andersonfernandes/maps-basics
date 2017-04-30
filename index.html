@@ -29,8 +29,17 @@
           zoom: 9,
           disableDefaultUI: true
         };
-        
+
         var map=new google.maps.Map(document.getElementById("map"),mapOptions);
+
+        var place = new google.maps.LatLng(-9.629765, -35.742818);
+        var marker = new google.maps.Marker({
+          position: place,
+          animation: google.maps.Animation.DROP,
+          icon: "img/pin.png"
+        });
+
+        marker.setMap(map); 
       } 
     </script>
 
