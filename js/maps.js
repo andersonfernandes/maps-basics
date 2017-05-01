@@ -42,16 +42,19 @@ function centralizeMap(map) {
 }
 
 function overlayStateBorders(map) {
-  var stateCoords = $.getJSON("./data/AL.json", function(data) {
-    var statePolygon = new google.maps.Polygon({
-      paths: data.borders,
+  var stateLayer = new google.maps.Data();
+
+  $.getJSON("./data/AL.geojson", function(data) {
+    stateLayer.addGeoJson(data);
+
+    stateLayer.setStyle({
+      fillColor: '#ffdcd3',
+      fillOpacity: 0.35,
       strokeColor: '#F47757',
       strokeOpacity: 0.8,
-      strokeWeight: 2,
-      fillColor: '#ffdcd3',
-      fillOpacity: 0.35
+      strokeWeight: 2
     });
 
-    statePolygon.setMap(map);
+    stateLayer.setMap(map);
   });
 }
